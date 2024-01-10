@@ -125,3 +125,9 @@
      width: 100%;
 
  }
+.logout {
+    font-size: 32px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+ }

@@ -1,4 +1,11 @@
 <?php
+session_start();
+if ( !isset($_SESSION["login"]) ) {
+    header("Location: login.php");
+    exit;
+}
+
+
 include 'koneksi.php';
 ?>
 
@@ -10,6 +17,15 @@ include 'koneksi.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Todo</title>
     <link rel="stylesheet" href="styleindex.css">
+    <script>
+        function konfirmasiLogout() {
+            var dialog = confirm("Apakah Anda yakin ingin logout?");
+            if (dialog == true) {
+                window.location.href = 'logut.php';
+            }
+        }
+    </script>
+    
 </head>
 
 <body>
@@ -23,8 +39,12 @@ include 'koneksi.php';
             <a href="?status=all">Semua Data</a>
             <a href="?status=completed">Selesai</a>
             <a href="?status=not_completed">Belum Selesai</a>
+            <a href="#" class="logout" onclick="konfirmasiLogout()">Logout</a>
 
         </nav>
+
+        
+
 
     </header>
 
@@ -34,7 +54,7 @@ include 'koneksi.php';
 
         <table border="1">
             <tr>
-                <th>ID</th>
+                <th>NO</th>
                 <th>TASK</th>
                 <th>WAKTU</th>
                 <th>DESKRIPSI</th>
@@ -88,6 +108,7 @@ include 'koneksi.php';
             }
             return dialog;
         }
+        
     </script>
 
 </body>
